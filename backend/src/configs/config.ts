@@ -5,5 +5,6 @@ export const envConfig = () => ({
     jwtSecret: process.env.JWT_SECRET,
     jwtExpiresIn: process.env.JWT_EXPIRATION,
     throttleTtl: parseInt(process.env.THROTTLE_TTL, 10) || 6000,
-    throttleLimit: parseInt(process.env.THROTTLE_LIMIT, 10) || 10
+    throttleLimit: parseInt(process.env.THROTTLE_LIMIT, 10) || 10,
+    clientUrl: process.env.CLIENT_URL,
 })
