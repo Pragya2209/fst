@@ -42,7 +42,7 @@ cd frontend
 
 ### Run the app
 
-1. In the frontend directory, you can run:
+1. In the `frontend` directory, you can run:
 npm start
 
 
