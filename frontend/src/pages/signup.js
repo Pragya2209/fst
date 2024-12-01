@@ -57,7 +57,7 @@ function Signup() {
   return (
     <div style={formStyles.container}>
       <div style={formStyles.formContainer}>
-        <Typography variant="h4" gutterBottom>Signup</Typography>
+        <Typography variant="h4" gutterBottom>SignUp</Typography>
         {loader && <Loader />}
         {error && <CustomAlert message={error} />}
         {successMessage && <CustomAlert severity="success" message={successMessage} />}
