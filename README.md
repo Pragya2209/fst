@@ -23,7 +23,7 @@ This is a full stack application with a backend built using NestJS and a fronten
 
 ### Running the app
 
-1. Create a .env file in the backend directory and add your environment variables.
+1. Create a .env file in the backend directory and add the environment variables.
 
 2. Start the application:
   npm run start
