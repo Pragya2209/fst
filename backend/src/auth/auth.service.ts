@@ -21,7 +21,7 @@ export class AuthService {
     ) { }
 
     async signup(signupDto: SignupDto): Promise<responseType> {
-        let responseObject = this.helperService.responseFormat();
+        let responseObject : responseType = this.helperService.responseFormat();
         try {
             this.logger.log({
                 methodName: this.helperService.getMethodName(),
@@ -29,7 +29,7 @@ export class AuthService {
                 signupDto
             })
             const { email, name, password } = signupDto;
-            const existingUser = await this.userDaoSerivce.findOneUser({ email });
+            const existingUser : User = await this.userDaoSerivce.findOneUser({ email });
             this.logger.log({
                 methodName: this.helperService.getMethodName(),
                 msg : 'existingUser',
@@ -44,7 +44,7 @@ export class AuthService {
                 });
             }
             else {
-                const byCryptSalt = this.configService.get('byCryptSalt');
+                const byCryptSalt = this.configService.get<number>('byCryptSalt');
                 const salt = await bcrypt.genSalt(byCryptSalt);
                 const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -70,7 +70,7 @@ export class AuthService {
     }
 
     async signIn(signInDto: SigninDto): Promise<responseType> {
-        let responseObject = this.helperService.responseFormat();
+        let responseObject  : responseType = this.helperService.responseFormat();
         try {
             this.logger.log({
                 methodName: this.helperService.getMethodName(),
@@ -78,7 +78,7 @@ export class AuthService {
                 signInDto
             })
             const { email, password } = signInDto;
-            const user = await this.userDaoSerivce.findOneUser({ email });
+            const user : User = await this.userDaoSerivce.findOneUser({ email });
             this.logger.log({
                 methodName: this.helperService.getMethodName(),
                 msg : 'user',
@@ -88,13 +88,13 @@ export class AuthService {
                 responseObject = this.helperService.response(responseCode.USER_NOT_FOUND);
             }
             else {
-                const isPasswordValid = await bcrypt.compare(password, user.password);
+                const isPasswordValid: boolean = await bcrypt.compare(password, user.password);
                 if (!isPasswordValid) {
                     responseObject = this.helperService.response(responseCode.UNAUTHORIZED);
                 }
                 else {
                     const payload = { email: user.email, name: user.name };
-                    const accessToken = await this.jwtService.signAsync(payload)
+                    const accessToken:string = await this.jwtService.signAsync(payload)
                     responseObject = this.helperService.response(responseCode.SUCCESS, { accessToken });
                 }
             }

@@ -38,11 +38,9 @@ import { Reflector } from '@nestjs/core';
         const payload = await this.jwtService.verifyAsync(
           token,
           {
-            secret: this.configService.get('jwtSecret'),
+            secret: this.configService.get<string>('jwtSecret'),
           }
         );
-        // 💡 We're assigning the payload to the request object here
-        // so that we can access it in our route handlers
         request['user'] = payload;
       } catch {
         return false;

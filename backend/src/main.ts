@@ -44,7 +44,6 @@ async function bootstrap() {
 
     await app.listen(port);
     logger.log('Application successfully started');
-
   }
   catch(error) {
     logger.error('Error: while starting application!', error);

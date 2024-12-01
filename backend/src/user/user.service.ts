@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { UserDao } from 'src/dao';
+import { User } from 'src/dao/entities';
 import { Helper } from 'src/global';
 import { responseCode, responseType } from 'src/utils';
 
@@ -12,7 +13,7 @@ export class UserService {
     ) { }
     
     async getProfile(req: any): Promise<responseType> {
-        let responseObject = this.helperService.responseFormat()
+        let responseObject : responseType = this.helperService.responseFormat()
         try {
             const { email } = req.user;
             this.logger.log({
@@ -20,13 +21,13 @@ export class UserService {
                 msg : 'req info',
                 user: req.user
             })
-            let user = await this.userDaoSerivce.findOneUser({email});
+            let user : User = await this.userDaoSerivce.findOneUser({email});
             this.logger.log({
                 methodName: this.helperService.getMethodName(),
                 msg : 'user info',
                 user
             })
-            let responseData = {
+            let responseData : any  = {
                 email: user.email,
                 name: user.name,
             }
