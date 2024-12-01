@@ -18,6 +18,7 @@ This is a full stack application with a backend built using NestJS and a fronten
 
 1. Navigate to the `backend` directory:
   cd backend
+2. Istall the dependency:
   npm install
 
 ### Running the app
