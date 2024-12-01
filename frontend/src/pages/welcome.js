@@ -15,6 +15,11 @@ function Welcome(props) {
     window.location.reload()
   };
 
+  const displayName = (name = "") => {
+    if (name && name.length) {
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+  }
   if (!props?.user?.user?.name) {
     return <Loader/>
   }
@@ -26,7 +31,7 @@ function Welcome(props) {
       variant="h4"
       style={welcomeStyles.headerText}
     >
-      Welcome to the application, {props.user.user.name && props.user.user.name.toUpperCase()}!
+      Welcome to the application, {displayName(props.user.user.name)}!
     </Typography>
 
     <CustomButton

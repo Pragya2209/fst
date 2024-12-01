@@ -11,7 +11,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-    private readonly logger = new Logger(AuthService.name,{ timestamp: true });
+    private readonly logger = new Logger(AuthService.name);
 
     constructor(
         private readonly userDaoSerivce: UserDao,

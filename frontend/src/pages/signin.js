@@ -36,11 +36,10 @@ function Login() {
         setError(response?.message || "Invalid credentials!");
       }
     } catch (err) {
-      setError(err.message || "Invalid credentials!");
+      setError(err.message || "Some error occurred!");
     }
     finally {
       setLoader(false)
-
     }
   };
 

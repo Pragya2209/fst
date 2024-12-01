@@ -5,7 +5,7 @@ import { responseCode, responseType } from 'src/utils';
 
 @Injectable()
 export class UserService {
-    private readonly logger = new Logger(UserService.name,{ timestamp: true });
+    private readonly logger = new Logger(UserService.name);
     constructor(
         private readonly userDaoSerivce: UserDao,
         private readonly helperService: Helper,
